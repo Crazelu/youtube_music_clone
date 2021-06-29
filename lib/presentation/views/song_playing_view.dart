@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:youtube_music_clone/presentation/shared/responsive_widget.dart';
+import 'package:youtube_music_clone/presentation/shared/shared.dart';
 
 class SongPlayingView extends StatelessWidget {
   const SongPlayingView({Key? key}) : super(key: key);
@@ -7,7 +7,16 @@ class SongPlayingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(builder: (context, size) {
-      return Container();
+      return Container(
+        height: size.height,
+        width: size.width,
+        child: Column(
+          children: [
+            NavBar(),
+            Gap(10.h),
+          ],
+        ),
+      );
     });
   }
 }
