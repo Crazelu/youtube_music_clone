@@ -22,7 +22,10 @@ class NavBar extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                NavBarItem(title: 'Home'),
+                NavBarItem(
+                  title: 'Home',
+                  current: true,
+                ),
                 NavBarItem(title: 'Explore'),
                 NavBarItem(title: 'Library'),
                 NavBarItem(

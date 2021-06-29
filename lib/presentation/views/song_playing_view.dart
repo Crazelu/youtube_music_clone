@@ -26,7 +26,7 @@ class SongPlayingView extends StatelessWidget {
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             fit: BoxFit.cover,
-                            image: AssetImage("album-cover".png))),
+                            image: AssetImage("bonnie-clyde".png))),
                   ),
                   Gap(250.w),
                   Expanded(child: PlayListTab()),
