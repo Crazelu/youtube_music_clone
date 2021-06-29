@@ -34,7 +34,7 @@ class NavBar extends StatelessWidget {
           ),
           Spacer(),
           CircleAvatar(
-            radius: 50.w,
+            radius: 45.w,
             backgroundImage: AssetImage("avatar".jpg),
           )
         ],
