@@ -18,21 +18,18 @@ class SongPlayingView extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Gap(context.screenWidth(.15)),
+                  Gap(context.screenWidth(.1)),
                   //song cover art
                   Container(
-                    width: context.screenWidth(.35),
-                    height: context.screenHeight(.5),
+                    width: context.screenWidth(.38),
+                    height: context.screenHeight(.65),
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             fit: BoxFit.cover,
                             image: AssetImage("album-cover".png))),
                   ),
-                  Gap(50.w),
-                  Expanded(
-                      child: ListView(
-                    children: [],
-                  )),
+                  Gap(250.w),
+                  Expanded(child: PlayListTab()),
                 ],
               ),
             ),
