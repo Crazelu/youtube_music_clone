@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:youtube_music_clone/models/song.dart';
+
+import 'song_card.dart';
 
 class PlayListTab extends StatelessWidget {
   const PlayListTab({Key? key}) : super(key: key);
@@ -24,7 +27,24 @@ class PlayListTab extends StatelessWidget {
             Expanded(
               child: TabBarView(
                 children: [
-                  Container(),
+                  Container(
+                      child: ListView.builder(
+                          itemCount: Song.songs.length,
+                          itemBuilder: (_, index) {
+                            var song = Song.songs[index];
+                            return SongCard(
+                              song: song,
+                              onTap: (song) {
+                                bool playing = true;
+                                if (song.playing) playing = false;
+                                Song.songs.forEach((song) {
+                                  song.playing = false;
+                                });
+
+                                song.playing = playing;
+                              },
+                            );
+                          })),
                   Container(),
                 ],
               ),

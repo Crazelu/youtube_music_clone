@@ -4,8 +4,9 @@ class Song {
   final String image;
   final String duration;
   final bool ep;
-  final bool liked;
-  final bool disliked;
+  bool liked;
+  bool disliked;
+  bool playing;
   final int year;
 
   Song({
@@ -17,6 +18,7 @@ class Song {
     this.ep = false,
     this.liked = false,
     this.disliked = false,
+    this.playing = false,
   });
 
   static List<Song> songs = [
