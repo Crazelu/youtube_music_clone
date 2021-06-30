@@ -38,7 +38,6 @@ class _SongCardImageState extends State<SongCardImage> {
           height: 80.h,
           width: 80.h,
           decoration: BoxDecoration(
-            color: Colors.white,
             image: DecorationImage(
               colorFilter: colorFilter,
               fit: BoxFit.cover,

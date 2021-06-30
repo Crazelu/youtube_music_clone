@@ -19,12 +19,18 @@ class MyApp extends StatelessWidget {
         title: 'YT Music Clone',
         theme: ThemeData(
           fontFamily: "Roboto",
+          brightness: Brightness.dark,
           backgroundColor: const Color(0xff030303),
           highlightColor: const Color(0xff818181),
           primaryColorLight: const Color(0xffffffff),
           accentColor: const Color(0xffa9a9a9),
           errorColor: const Color(0xffff0100),
           primarySwatch: Colors.blue,
+          iconTheme: IconThemeData(
+            color: const Color(
+              0xffffffff,
+            ),
+          ),
         ),
         navigatorKey: locator<NavigationHandler>().navigatorKey,
         home: SongPlayingView(),

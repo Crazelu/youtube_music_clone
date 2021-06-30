@@ -37,7 +37,7 @@ class _SongPlayingViewState extends State<SongPlayingView> {
                   //song cover art
                   Container(
                     width: context.screenWidth(.37),
-                    height: context.screenHeight(.65),
+                    height: context.screenHeight(.6),
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
@@ -66,10 +66,35 @@ class _SongPlayingViewState extends State<SongPlayingView> {
                 ],
               ),
             ),
-            Gap(70.h),
             Container(
+              color: const Color(0xff212121),
               height: 200.h,
               width: size.width,
+              child: Column(
+                children: [
+                  Container(
+                    height: 5.h,
+                    width: size.width,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Theme.of(context).errorColor,
+                          Theme.of(context).errorColor,
+                        ],
+                      ),
+                    ),
+                  ),
+                  Gap(40.h),
+                  Row(
+                    children: [
+                      Gap(60.w),
+                      SongControls(duration: currentSong.duration),
+                      Spacer(),
+                      SongControlCard(song: currentSong),
+                    ],
+                  ),
+                ],
+              ),
             )
           ],
         ),
