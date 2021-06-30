@@ -6,7 +6,13 @@ import 'package:youtube_music_clone/models/song.dart';
 import 'song_card.dart';
 
 class PlayListTab extends StatelessWidget {
-  const PlayListTab({Key? key}) : super(key: key);
+  final List<Song> songs;
+  final Function(Song) onSongSelected;
+  const PlayListTab({
+    Key? key,
+    required this.songs,
+    required this.onSongSelected,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +41,7 @@ class PlayListTab extends StatelessWidget {
                             return SongCard(
                               song: song,
                               onTap: (song) {
-                                bool playing = true;
-                                if (song.playing) playing = false;
-                                Song.songs.forEach((song) {
-                                  song.playing = false;
-                                });
-
-                                song.playing = playing;
+                                onSongSelected(song);
                               },
                             );
                           })),
