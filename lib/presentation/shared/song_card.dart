@@ -25,7 +25,7 @@ class SongCard extends StatelessWidget {
       title: Text(
         song.artist,
         style: TextStyle(
-          fontSize: 40.sp,
+          fontSize: 38.sp,
           fontWeight: FontWeight.w500,
           color: Theme.of(context).primaryColorLight,
         ),

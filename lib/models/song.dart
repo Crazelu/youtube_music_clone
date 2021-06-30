@@ -41,7 +41,7 @@ class Song {
       artist: 'Munn & Jude.',
       duration: '2:40',
       image: 'munn',
-      title: 'Me & My Friends(feat. Fortune)',
+      title: 'Me & My Friends (feat. Fortune)',
       year: 2020,
     ),
     Song(
@@ -93,7 +93,7 @@ class Song {
       artist: 'XAM',
       duration: '2:34',
       image: 'xam',
-      title: 'FIGHTING(feat. d1v)',
+      title: 'FIGHTING (feat. d1v)',
       year: 2018,
     ),
   ];

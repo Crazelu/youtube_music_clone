@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:youtube_music_clone/models/song.dart';
-
+import 'package:youtube_music_clone/utils/utils.dart';
 import 'song_card.dart';
 
 class PlayListTab extends StatelessWidget {
@@ -40,9 +40,7 @@ class PlayListTab extends StatelessWidget {
                             var song = Song.songs[index];
                             return SongCard(
                               song: song,
-                              onTap: (song) {
-                                onSongSelected(song);
-                              },
+                              onTap: onSongSelected,
                             );
                           })),
                   Container(),

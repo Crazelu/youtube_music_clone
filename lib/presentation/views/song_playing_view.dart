@@ -36,29 +36,33 @@ class _SongPlayingViewState extends State<SongPlayingView> {
                   Gap(context.screenWidth(.1)),
                   //song cover art
                   Container(
-                    width: context.screenWidth(.38),
+                    width: context.screenWidth(.37),
                     height: context.screenHeight(.65),
                     decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: AssetImage(currentSong.image.png))),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage(currentSong.image.png),
+                      ),
+                    ),
                   ),
                   Gap(250.w),
                   Expanded(
-                      child: PlayListTab(
-                    songs: songs,
-                    onSongSelected: (song) {
-                      bool playing = true;
-                      if (song.playing) playing = false;
-                      Song.songs.forEach((song) {
-                        song.playing = false;
-                      });
+                    child: PlayListTab(
+                      songs: songs,
+                      onSongSelected: (song) {
+                        bool playing = true;
+                        if (song.playing) playing = false;
+                        Song.songs.forEach((song) {
+                          song.playing = false;
+                        });
 
-                      song.playing = playing;
-                      currentSong = song;
-                      setState(() {});
-                    },
-                  )),
+                        song.playing = playing;
+                        currentSong = song;
+                        setState(() {});
+                      },
+                    ),
+                  ),
+                  Gap(50.w),
                 ],
               ),
             ),
