@@ -88,7 +88,45 @@ class _SongPlayingViewState extends State<SongPlayingView> {
                   Row(
                     children: [
                       Gap(60.w),
-                      SongControls(duration: currentSong.duration),
+                      SongControls(
+                        song: currentSong,
+                        onNext: (song) {
+                          int nextIndex = 0;
+                          for (var i in songs) {
+                            if (i == song) {
+                              nextIndex = songs.indexOf(i) + 1;
+                              if (nextIndex == songs.length - 1) {
+                                nextIndex = 0;
+                              }
+                              i.playing = false;
+                            }
+                            currentSong.playing = false;
+                            songs[nextIndex].playing = true;
+                            currentSong = songs[nextIndex];
+                            setState(() {});
+                          }
+                        },
+                        onPrevious: (song) {
+                          int prevIndex = 0;
+                          for (var i in songs) {
+                            if (i == song) {
+                              prevIndex = songs.indexOf(i) - 1;
+                              if (prevIndex < 0) {
+                                prevIndex = songs.length - 1;
+                              }
+                              i.playing = false;
+                            }
+                            currentSong.playing = false;
+                            songs[prevIndex].playing = true;
+                            currentSong = songs[prevIndex];
+                            setState(() {});
+                          }
+                        },
+                        togglePlay: (song) {
+                          song.playing = !song.playing;
+                          setState(() {});
+                        },
+                      ),
                       Spacer(),
                       SongControlCard(song: currentSong),
                     ],
