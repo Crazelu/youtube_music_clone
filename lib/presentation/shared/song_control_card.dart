@@ -56,8 +56,8 @@ class SongControlCard extends StatelessWidget {
                 children: [
                   if (song.ep) ...{
                     Container(
-                      height: 30.h,
-                      width: 30.h,
+                      height: 25.h,
+                      width: 25.h,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(3.h),
                         color: const Color(0xff808080),
@@ -66,7 +66,7 @@ class SongControlCard extends StatelessWidget {
                       child: Text(
                         'E',
                         style: TextStyle(
-                          fontSize: 30.sp,
+                          fontSize: 25.sp,
                           color: Theme.of(context).backgroundColor,
                         ),
                       ),
