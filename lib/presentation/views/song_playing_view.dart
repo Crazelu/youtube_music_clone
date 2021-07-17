@@ -16,11 +16,80 @@ class _SongPlayingViewState extends State<SongPlayingView> {
 
   Song get currentSong => _currentSong;
   List<Song> get songs => _songs;
+
   @override
   void initState() {
     super.initState();
     _songs = Song.songs;
     _currentSong = _songs[0];
+  }
+
+  void shuffleSongs() {
+    songs.shuffle();
+    setState(() {});
+  }
+
+  void onNext(Song song) {
+    int nextIndex = 0;
+    for (var i in songs) {
+      if (i == song) {
+        nextIndex = songs.indexOf(i) + 1;
+        if (nextIndex == songs.length - 1) {
+          nextIndex = 0;
+        }
+        i.playing = false;
+      }
+      currentSong.playing = false;
+      songs[nextIndex].playing = true;
+      _currentSong = songs[nextIndex];
+      setState(() {});
+    }
+  }
+
+  void onPrevious(Song song) {
+    int prevIndex = 0;
+    for (var i in songs) {
+      if (i == song) {
+        prevIndex = songs.indexOf(i) - 1;
+        if (prevIndex < 0) {
+          prevIndex = songs.length - 1;
+        }
+        i.playing = false;
+      }
+      currentSong.playing = false;
+      songs[prevIndex].playing = true;
+      _currentSong = songs[prevIndex];
+      setState(() {});
+    }
+  }
+
+  void togglePlay(Song song) {
+    song.playing = !song.playing;
+    setState(() {});
+  }
+
+  void toggleLike(Song song) {
+    song.disliked = false;
+    song.liked = !song.liked;
+    setState(() {});
+  }
+
+  void toggleDislike(Song song) {
+    song.liked = false;
+    song.disliked = !song.disliked;
+    setState(() {});
+  }
+
+  void onSongSelected(Song song) {
+    bool playing = true;
+    if (song.playing) playing = false;
+    Song.songs.forEach((song) {
+      song.playing = false;
+    });
+
+    song.playing = playing;
+    _currentSong = song;
+    setState(() {});
   }
 
   @override
@@ -53,17 +122,7 @@ class _SongPlayingViewState extends State<SongPlayingView> {
                   Expanded(
                     child: PlayListTab(
                       songs: _songs,
-                      onSongSelected: (song) {
-                        bool playing = true;
-                        if (song.playing) playing = false;
-                        Song.songs.forEach((song) {
-                          song.playing = false;
-                        });
-
-                        song.playing = playing;
-                        _currentSong = song;
-                        setState(() {});
-                      },
+                      onSongSelected: onSongSelected,
                     ),
                   ),
                   Gap(50.w),
@@ -73,56 +132,12 @@ class _SongPlayingViewState extends State<SongPlayingView> {
             BottomControlBar(
               currentSong: currentSong,
               songs: songs,
-              shuffleSongs: () {
-                songs.shuffle();
-                setState(() {});
-              },
-              onNext: (song) {
-                int nextIndex = 0;
-                for (var i in songs) {
-                  if (i == song) {
-                    nextIndex = songs.indexOf(i) + 1;
-                    if (nextIndex == songs.length - 1) {
-                      nextIndex = 0;
-                    }
-                    i.playing = false;
-                  }
-                  currentSong.playing = false;
-                  songs[nextIndex].playing = true;
-                  _currentSong = songs[nextIndex];
-                  setState(() {});
-                }
-              },
-              onPrevious: (song) {
-                int prevIndex = 0;
-                for (var i in songs) {
-                  if (i == song) {
-                    prevIndex = songs.indexOf(i) - 1;
-                    if (prevIndex < 0) {
-                      prevIndex = songs.length - 1;
-                    }
-                    i.playing = false;
-                  }
-                  currentSong.playing = false;
-                  songs[prevIndex].playing = true;
-                  _currentSong = songs[prevIndex];
-                  setState(() {});
-                }
-              },
-              togglePlay: (song) {
-                song.playing = !song.playing;
-                setState(() {});
-              },
-              toggleLike: (song) {
-                song.disliked = false;
-                song.liked = !song.liked;
-                setState(() {});
-              },
-              toggleDislike: (song) {
-                song.liked = false;
-                song.disliked = !song.disliked;
-                setState(() {});
-              },
+              shuffleSongs: shuffleSongs,
+              onNext: onNext,
+              onPrevious: onPrevious,
+              togglePlay: togglePlay,
+              toggleLike: toggleLike,
+              toggleDislike: toggleDislike,
             ),
           ],
         ),
