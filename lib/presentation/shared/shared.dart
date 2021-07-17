@@ -6,3 +6,4 @@ export 'package:youtube_music_clone/utils/utils.dart';
 export 'playlist_tab.dart';
 export 'controls.dart';
 export 'song_control_card.dart';
+export 'bottom_control_bar_actions.dart';

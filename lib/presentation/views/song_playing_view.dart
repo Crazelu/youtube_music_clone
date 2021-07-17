@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_music_clone/models/song.dart';
+import 'package:youtube_music_clone/presentation/shared/bottom_control_bar.dart';
 import 'package:youtube_music_clone/presentation/shared/shared.dart';
 
 class SongPlayingView extends StatefulWidget {
@@ -10,13 +11,16 @@ class SongPlayingView extends StatefulWidget {
 }
 
 class _SongPlayingViewState extends State<SongPlayingView> {
-  late List<Song> songs;
-  late Song currentSong;
+  late List<Song> _songs;
+  late Song _currentSong;
+
+  Song get currentSong => _currentSong;
+  List<Song> get songs => _songs;
   @override
   void initState() {
     super.initState();
-    songs = Song.songs;
-    currentSong = songs[0];
+    _songs = Song.songs;
+    _currentSong = _songs[0];
   }
 
   @override
@@ -48,7 +52,7 @@ class _SongPlayingViewState extends State<SongPlayingView> {
                   Gap(250.w),
                   Expanded(
                     child: PlayListTab(
-                      songs: songs,
+                      songs: _songs,
                       onSongSelected: (song) {
                         bool playing = true;
                         if (song.playing) playing = false;
@@ -57,7 +61,7 @@ class _SongPlayingViewState extends State<SongPlayingView> {
                         });
 
                         song.playing = playing;
-                        currentSong = song;
+                        _currentSong = song;
                         setState(() {});
                       },
                     ),
@@ -66,74 +70,60 @@ class _SongPlayingViewState extends State<SongPlayingView> {
                 ],
               ),
             ),
-            Container(
-              color: const Color(0xff212121),
-              height: 200.h,
-              width: size.width,
-              child: Column(
-                children: [
-                  Container(
-                    height: 5.h,
-                    width: size.width,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Theme.of(context).errorColor,
-                          Theme.of(context).errorColor,
-                        ],
-                      ),
-                    ),
-                  ),
-                  Gap(40.h),
-                  Row(
-                    children: [
-                      Gap(60.w),
-                      SongControls(
-                        song: currentSong,
-                        onNext: (song) {
-                          int nextIndex = 0;
-                          for (var i in songs) {
-                            if (i == song) {
-                              nextIndex = songs.indexOf(i) + 1;
-                              if (nextIndex == songs.length - 1) {
-                                nextIndex = 0;
-                              }
-                              i.playing = false;
-                            }
-                            currentSong.playing = false;
-                            songs[nextIndex].playing = true;
-                            currentSong = songs[nextIndex];
-                            setState(() {});
-                          }
-                        },
-                        onPrevious: (song) {
-                          int prevIndex = 0;
-                          for (var i in songs) {
-                            if (i == song) {
-                              prevIndex = songs.indexOf(i) - 1;
-                              if (prevIndex < 0) {
-                                prevIndex = songs.length - 1;
-                              }
-                              i.playing = false;
-                            }
-                            currentSong.playing = false;
-                            songs[prevIndex].playing = true;
-                            currentSong = songs[prevIndex];
-                            setState(() {});
-                          }
-                        },
-                        togglePlay: (song) {
-                          song.playing = !song.playing;
-                          setState(() {});
-                        },
-                      ),
-                      Spacer(),
-                      SongControlCard(song: currentSong),
-                    ],
-                  ),
-                ],
-              ),
-            )
+            BottomControlBar(
+              currentSong: currentSong,
+              songs: songs,
+              shuffleSongs: () {
+                songs.shuffle();
+                setState(() {});
+              },
+              onNext: (song) {
+                int nextIndex = 0;
+                for (var i in songs) {
+                  if (i == song) {
+                    nextIndex = songs.indexOf(i) + 1;
+                    if (nextIndex == songs.length - 1) {
+                      nextIndex = 0;
+                    }
+                    i.playing = false;
+                  }
+                  currentSong.playing = false;
+                  songs[nextIndex].playing = true;
+                  _currentSong = songs[nextIndex];
+                  setState(() {});
+                }
+              },
+              onPrevious: (song) {
+                int prevIndex = 0;
+                for (var i in songs) {
+                  if (i == song) {
+                    prevIndex = songs.indexOf(i) - 1;
+                    if (prevIndex < 0) {
+                      prevIndex = songs.length - 1;
+                    }
+                    i.playing = false;
+                  }
+                  currentSong.playing = false;
+                  songs[prevIndex].playing = true;
+                  _currentSong = songs[prevIndex];
+                  setState(() {});
+                }
+              },
+              togglePlay: (song) {
+                song.playing = !song.playing;
+                setState(() {});
+              },
+              toggleLike: (song) {
+                song.disliked = false;
+                song.liked = !song.liked;
+                setState(() {});
+              },
+              toggleDislike: (song) {
+                song.liked = false;
+                song.disliked = !song.disliked;
+                setState(() {});
+              },
+            ),
           ],
         ),
       );

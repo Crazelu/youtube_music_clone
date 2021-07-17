@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:youtube_music_clone/models/song.dart';
-import 'package:youtube_music_clone/utils/utils.dart';
 import 'song_card.dart';
 
 class PlayListTab extends StatelessWidget {
@@ -33,16 +32,15 @@ class PlayListTab extends StatelessWidget {
             Expanded(
               child: TabBarView(
                 children: [
-                  Container(
-                      child: ListView.builder(
-                          itemCount: Song.songs.length,
-                          itemBuilder: (_, index) {
-                            var song = Song.songs[index];
-                            return SongCard(
-                              song: song,
-                              onTap: onSongSelected,
-                            );
-                          })),
+                  ListView.builder(
+                      itemCount: Song.songs.length,
+                      itemBuilder: (_, index) {
+                        var song = Song.songs[index];
+                        return SongCard(
+                          song: song,
+                          onTap: onSongSelected,
+                        );
+                      }),
                   Container(),
                 ],
               ),
