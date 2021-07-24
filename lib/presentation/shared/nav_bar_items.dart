@@ -58,7 +58,7 @@ class _NavBarItemState extends State<NavBarItem> {
         label: Text(
           widget.title,
           style: TextStyle(
-            fontSize: 50.sp,
+            fontSize: 40.sp,
             color: color,
           ),
         ),

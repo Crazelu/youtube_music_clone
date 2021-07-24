@@ -3,7 +3,12 @@ import 'package:youtube_music_clone/presentation/shared/shared.dart';
 
 class SectionTitle extends StatelessWidget {
   final String text;
-  const SectionTitle(this.text, {Key? key}) : super(key: key);
+  final bool hideSeeAll;
+  const SectionTitle(
+    this.text, {
+    Key? key,
+    this.hideSeeAll = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +23,14 @@ class SectionTitle extends StatelessWidget {
           ),
         ),
         Gap(70.w),
-        Text(
-          "SEE ALL",
-          style: TextStyle(
-            fontSize: 30.sp,
-            color: Theme.of(context).highlightColor,
+        if (!hideSeeAll)
+          Text(
+            "SEE ALL",
+            style: TextStyle(
+              fontSize: 30.sp,
+              color: Theme.of(context).highlightColor,
+            ),
           ),
-        ),
       ],
     );
   }

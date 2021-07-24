@@ -37,7 +37,7 @@ class SongCard extends StatelessWidget {
               softWrap: true,
               maxLines: 2,
               style: TextStyle(
-                fontSize: 40.sp,
+                fontSize: 30.sp,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -47,8 +47,8 @@ class SongCard extends StatelessWidget {
             children: [
               if (song.ep) ...{
                 Container(
-                  height: 30.h,
-                  width: 30.h,
+                  height: 20.h,
+                  width: 20.h,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(3.h),
                     color: const Color(0xff808080),
@@ -57,7 +57,7 @@ class SongCard extends StatelessWidget {
                   child: Text(
                     'E',
                     style: TextStyle(
-                      fontSize: 30.sp,
+                      fontSize: 20.sp,
                       color: Theme.of(context).backgroundColor,
                     ),
                   ),
@@ -72,7 +72,7 @@ class SongCard extends StatelessWidget {
                   softWrap: true,
                   maxLines: 2,
                   style: TextStyle(
-                    fontSize: 35.sp,
+                    fontSize: 30.sp,
                     color: const Color(0xff616161),
                   ),
                 ),
