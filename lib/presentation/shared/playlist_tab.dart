@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:youtube_music_clone/models/song.dart';
-import 'song_card.dart';
+import 'song_tile.dart';
 
 class PlayListTab extends StatelessWidget {
   final List<Song> songs;
@@ -36,7 +36,7 @@ class PlayListTab extends StatelessWidget {
                       itemCount: Song.songs.length,
                       itemBuilder: (_, index) {
                         var song = Song.songs[index];
-                        return SongCard(
+                        return SongTile(
                           song: song,
                           onTap: onSongSelected,
                         );

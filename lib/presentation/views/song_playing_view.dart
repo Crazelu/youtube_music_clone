@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_music_clone/models/song.dart';
-import 'package:youtube_music_clone/presentation/shared/bottom_control_bar.dart';
 import 'package:youtube_music_clone/presentation/shared/shared.dart';
 
 class SongPlayingView extends StatefulWidget {

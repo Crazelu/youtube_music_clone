@@ -8,6 +8,7 @@ class Song {
   bool disliked;
   bool playing;
   final int year;
+  final int index;
 
   Song({
     required this.title,
@@ -19,6 +20,7 @@ class Song {
     this.liked = false,
     this.disliked = false,
     this.playing = false,
+    this.index = 0,
   });
 
   static List<Song> songs = [
@@ -28,6 +30,7 @@ class Song {
       image: 'bonnie-clyde',
       title: 'Bonnie & Clyde',
       year: 2019,
+      index: 1,
     ),
     Song(
       artist: 'Trevor Daniel',
@@ -36,6 +39,7 @@ class Song {
       title: 'Lovesick',
       year: 2020,
       ep: true,
+      index: 2,
     ),
     Song(
       artist: 'Munn & Jude.',
@@ -43,6 +47,7 @@ class Song {
       image: 'munn',
       title: 'Me & My Friends (feat. Fortune)',
       year: 2020,
+      index: 3,
     ),
     Song(
       artist: 'COTIS',
@@ -51,6 +56,7 @@ class Song {
       title: 'Reckless',
       year: 2020,
       ep: true,
+      index: 4,
     ),
     Song(
       artist: 'Chris Krahn',
@@ -58,6 +64,7 @@ class Song {
       image: 'chris',
       title: 'Hope He Gives You Life',
       year: 2020,
+      index: 5,
     ),
     Song(
       artist: 'LXVI',
@@ -66,6 +73,7 @@ class Song {
       title: 'Hurt You',
       year: 2019,
       ep: true,
+      index: 6,
     ),
     Song(
       artist: 'Mezsiah',
@@ -73,6 +81,7 @@ class Song {
       image: 'goons',
       title: 'Goons',
       year: 2020,
+      index: 7,
     ),
     Song(
       artist: 'Vaboh',
@@ -80,6 +89,7 @@ class Song {
       image: 'vaboh',
       title: "I'm Sick of Trying",
       year: 2018,
+      index: 8,
     ),
     Song(
       artist: 'nicoteen ninyo',
@@ -88,6 +98,7 @@ class Song {
       title: 'cut the deepest',
       year: 2020,
       ep: true,
+      index: 9,
     ),
     Song(
       artist: 'XAM',
@@ -95,6 +106,7 @@ class Song {
       image: 'xam',
       title: 'FIGHTING (feat. d1v)',
       year: 2018,
+      index: 10,
     ),
   ];
 }

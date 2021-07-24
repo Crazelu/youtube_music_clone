@@ -3,15 +3,15 @@ import 'package:youtube_music_clone/models/song.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youtube_music_clone/utils/utils.dart';
 
-class SongCardImage extends StatefulWidget {
+class SongTileImage extends StatefulWidget {
   final Song song;
-  const SongCardImage({Key? key, required this.song}) : super(key: key);
+  const SongTileImage({Key? key, required this.song}) : super(key: key);
 
   @override
-  _SongCardImageState createState() => _SongCardImageState();
+  _SongTileImageState createState() => _SongTileImageState();
 }
 
-class _SongCardImageState extends State<SongCardImage> {
+class _SongTileImageState extends State<SongTileImage> {
   Song get song => widget.song;
 
   bool focused = false;
