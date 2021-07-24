@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youtube_music_clone/handlers/handlers.dart';
+import 'package:youtube_music_clone/presentation/views/explore_view.dart';
 import 'package:youtube_music_clone/presentation/views/views.dart';
 import 'package:youtube_music_clone/utils/utils.dart';
 
@@ -34,6 +35,10 @@ class MyApp extends StatelessWidget {
         ),
         navigatorKey: locator<NavigationHandler>().navigatorKey,
         home: SongPlayingView(),
+        routes: {
+          SongPlayingViewRoute: (_) => SongPlayingView(),
+          ExploreViewRoute: (_) => ExploreView(),
+        },
       ),
     );
   }

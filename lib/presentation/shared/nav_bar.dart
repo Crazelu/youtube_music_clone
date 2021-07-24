@@ -1,10 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:youtube_music_clone/handlers/navigation_handler.dart';
 import 'package:youtube_music_clone/presentation/shared/nav_bar_items.dart';
 import 'package:youtube_music_clone/utils/utils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class NavBar extends StatelessWidget {
-  const NavBar({Key? key}) : super(key: key);
+class NavBar extends StatefulWidget {
+  final int currentIndex;
+  const NavBar({
+    Key? key,
+    this.currentIndex = 0,
+  }) : super(key: key);
+
+  @override
+  _NavBarState createState() => _NavBarState();
+}
+
+class _NavBarState extends State<NavBar> {
+  late int _currentIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentIndex = widget.currentIndex;
+  }
+
+  void setCurrentIndex(int index) {
+    _currentIndex = index;
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +47,36 @@ class NavBar extends StatelessWidget {
               children: [
                 NavBarItem(
                   title: 'Home',
-                  current: true,
+                  current: _currentIndex == 0,
+                  onTap: () {
+                    setCurrentIndex(0);
+                    locator<NavigationHandler>()
+                        .pushReplacementNamed(SongPlayingViewRoute);
+                  },
                 ),
-                NavBarItem(title: 'Explore'),
-                NavBarItem(title: 'Library'),
+                NavBarItem(
+                  title: 'Explore',
+                  current: _currentIndex == 1,
+                  onTap: () {
+                    setCurrentIndex(1);
+                    locator<NavigationHandler>()
+                        .pushReplacementNamed(ExploreViewRoute);
+                  },
+                ),
+                NavBarItem(
+                  title: 'Library',
+                  current: _currentIndex == 2,
+                  onTap: () {
+                    setCurrentIndex(2);
+                  },
+                ),
                 NavBarItem(
                   title: 'Search',
+                  current: _currentIndex == 3,
                   search: true,
+                  onTap: () {
+                    setCurrentIndex(3);
+                  },
                 ),
               ],
             ),
