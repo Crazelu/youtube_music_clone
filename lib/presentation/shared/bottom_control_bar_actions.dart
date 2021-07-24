@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:youtube_music_clone/handlers/handlers.dart';
+import 'package:youtube_music_clone/utils/utils.dart';
 
 class BottomControlBarActions extends StatefulWidget {
   final bool hasLeftBottomControlBar;
@@ -115,10 +117,15 @@ class _BottomControlBarActionsState extends State<BottomControlBarActions> {
             ),
           ),
           Gap(50.w),
-          Icon(
-            Icons.arrow_drop_down,
-            color: Theme.of(context).primaryColorLight,
-            size: 55.w,
+          GestureDetector(
+            onTap: () {
+              locator<NavigationHandler>().goBack();
+            },
+            child: Icon(
+              Icons.arrow_drop_down,
+              color: Theme.of(context).primaryColorLight,
+              size: 55.w,
+            ),
           ),
           Gap(50.w),
         ],

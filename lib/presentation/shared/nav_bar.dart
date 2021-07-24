@@ -51,7 +51,7 @@ class _NavBarState extends State<NavBar> {
                   onTap: () {
                     setCurrentIndex(0);
                     locator<NavigationHandler>()
-                        .pushReplacementNamed(SongPlayingViewRoute);
+                        .pushReplacementNamed(HomeViewRoute);
                   },
                 ),
                 NavBarItem(
